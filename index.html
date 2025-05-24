@@ -2,7 +2,15 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Личный сайт Baiazet. Проекты, контакты, исследования.">
+  <meta name="keywords" content="Baiazet, проекты, технологии, Telegram, Instagram">
+  <meta name="author" content="Baiazet">
+  <meta property="og:image" content="https://i.imgur.com/3GvwNBf.png">
   <title>Baiazet</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
     :root {
       --bg: #f8f8f8;
@@ -19,13 +27,14 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background 0.3s, color 0.3s;
     }
     header {
       background: var(--header);
@@ -80,7 +89,6 @@
       color: var(--primary);
     }
   </style>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -91,11 +99,16 @@
   <div class="content">
     <p>Я создаю проекты, изучаю технологии и делаю полезные вещи. Свяжитесь со мной:</p>
     <div class="buttons">
-      <a href="https://instagram.com/baiazetsh" target="_blank"><span class="material-icons">photo_camera</span> Instagram</a>
-      <a href="mailto:sherfedinov.b@gmail.com"><span class="material-icons">email</span> Email</a>
-      <a href="https://t.me/@Abdrn1k83" target="_blank"><span class="material-icons">send</span> Telegram</a>
+      <a href="https://instagram.com/baiazetsh" target="_blank" aria-label="Instagram">
+        <span class="material-icons" aria-hidden="true">photo_camera</span> Instagram</a>
+      <a href="mailto:sherfedinov.b@gmail.com" aria-label="Email">
+        <span class="material-icons" aria-hidden="true">email</span> Email</a>
+      <a href="https://t.me/@Abdrn1k83" target="_blank" aria-label="Telegram">
+        <span class="material-icons" aria-hidden="true">send</span> Telegram</a>
     </div>
-    <div class="toggle-theme" onclick="toggleTheme()">Переключить тему</div>
+    <div class="toggle-theme" onclick="toggleTheme()">
+      <span class="material-icons" aria-hidden="true">brightness_6</span> Переключить тему
+    </div>
   </div>
   <footer>
     &copy; 2025 Baiazet. Все права защищены.
@@ -103,6 +116,10 @@
   <script>
     function toggleTheme() {
       document.body.classList.toggle('dark');
+    }
+    // Автоматическое применение тёмной темы, если у пользователя она включена
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
     }
   </script>
 </body>
