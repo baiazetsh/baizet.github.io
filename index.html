@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+# Повторно создаём очищенный HTML-файл после сброса среды
+html_path = Path("/mnt/data/index_cleaned.html")
+
+# Чистый HTML-файл с одним блоком счётчика
+cleaned_html = '''<!DOCTYPE html>
 <html lang="ru">
 <head>
   <link rel="icon" href="/favicon.ico">
@@ -121,19 +127,15 @@
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
-    // Автоматическое применение тёмной темы, если у пользователя она включена
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.body.classList.add('dark');
     }
   </script>
 
-   <div id="visit-counter"
+  <div id="visit-counter"
        style="margin: 20px auto; text-align: center; font-family: sans-serif; font-size: 14px; color: gray;">
     Loading visitors...
   </div>
-
-  <script data-goatcounter="https://baiazet.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
 
   <script>
     fetch("https://baiazet.goatcounter.com/counter/" + encodeURIComponent(location.pathname) + ".json")
@@ -149,5 +151,7 @@
   </script>
 </body>
 </html>
+'''
 
-
+html_path.write_text(cleaned_html, encoding="utf-8")
+html_path
